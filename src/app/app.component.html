@@ -1,16 +1,24 @@
 <div class=" container pt-5" [ngStyle]="{maxWidth : '600px'}" role="main">
   <h1>Todo</h1>
-  <div class="d-flex flex-column flex-md-row gap-3 w-100 mb-5">
+  <div class="d-flex flex-column flex-md-row gap-3 w-100 mb-4">
     <div class="flex-grow-1">
       <input type="text" placeholder="Name" class="form-control" [(ngModel)]="todoInputValue" />
     </div>
-    <button class="btn btn-primary px-5 text-nowrap" (click)="addTodo()" [disabled]="todoInputValue === ''">Add
-      Todo</button>
+    <button class="btn btn-primary px-5 text-nowrap fw-bold" (click)="addTodo()"
+      [disabled]="todoInputValue === ''">Add</button>
   </div>
-  <hr />
   <div class="d-flex flex-column gap-3">
-    <div class="card p-2" *ngFor="let todoValue of todos">
-      {{todoValue}}
+    <div class="p-2 d-flex justify-content-end" *ngIf="todos.length > 0">
+      <button class="btn btn-danger fw-bold" (click)="emptyTodos()">Empty</button>
+    </div>
+    <div class="card p-2" *ngFor="let todo of todos">
+      <div class="d-flex align-items-center">
+
+        <span class="flex-grow-1">
+          {{todo.value}}
+        </span>
+        <button class="btn btn-light text-danger fw-bold" (click)="deleteTodo(todo.id)">Delete</button>
+      </div>
     </div>
   </div>
 </div>
