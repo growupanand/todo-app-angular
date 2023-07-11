@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'todo-app-angular';
+  todos:string[] = [];
+  todoInputValue:string = "";
+
+  addTodo() {
+    this.todos.push(this.todoInputValue);
+    this.todoInputValue = "";
+  }
 }
